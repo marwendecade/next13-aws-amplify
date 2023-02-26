@@ -1,12 +1,22 @@
 // pages/index.js
 import Image from "next/image";
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 export default function Home({ formattedDate }) {
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    fetch('/api/items').then((response) => response.json()).then((response) => {
+      setItems(response.items)
+    })
+  }, [
+
+  ])
+
   return (
     <>
       <h1>Static page</h1>
-      <Image src="/next.svg" width={200} height={100} />
       <p>This page is static. It was built on {formattedDate}.</p>
       <p>
         <Link href="/ssr">
@@ -21,6 +31,14 @@ export default function Home({ formattedDate }) {
           SSG
         </Link>
       </p>
+      <div style={{padding:'2rem'}}>
+
+      <p>Data fetched from the API:</p>
+      <ul>
+        {items.map(({title}) => <li key={title}>{title}</li> )}
+      </ul>
+      </div>
+      <Image src="/bg.jpeg" width={400} height={100} />
     </>
   );
 }

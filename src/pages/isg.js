@@ -6,7 +6,6 @@ export default function Home({ formattedDate }) {
   return (
     <>
       <h1>ISG</h1>
-      <Image src="/next.svg" width={200} height={100} />
       <p>This page is static. It was built on {formattedDate}.</p>
       <p>
         <Link href="/ssr">
