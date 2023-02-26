@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home({ formattedDate }) {
   return (
     <>
-      <h1>Static page</h1>
+      <h1>ISG</h1>
       <Image src="/next.svg" width={200} height={100} />
       <p>This page is static. It was built on {formattedDate}.</p>
       <p>
@@ -32,5 +32,8 @@ export async function getStaticProps() {
     timeStyle: "long",
   }).format(buildDate);
 
-  return { props: { formattedDate } };
+  return {
+    revalidate: 60 * 2,
+    props: { formattedDate }
+  };
 }

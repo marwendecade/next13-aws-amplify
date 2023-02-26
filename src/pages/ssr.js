@@ -1,13 +1,25 @@
 // pages/ssr.js
+import Link from "next/link";
+
 export default function SSR({ formattedDate }) {
   return (
     <>
-      <h1>Server-side rendered page</h1>
+      <h1>SSG</h1>
       <p>
         This page is server-side rendered. It was rendered on {formattedDate}.
       </p>
       <p>
-        <a href="/">View a static page.</a>
+        <Link href="/ssr">
+          SSR
+        </Link>
+        &nbsp;
+        <Link href="/isg">
+          ISG
+        </Link>
+        &nbsp;
+        <Link href="/">
+          SSG
+        </Link>
       </p>
     </>
   );
